@@ -1,0 +1,143 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="4ac1c6c6-873d-48a5-8fde-46687e149a9b" LowerBound="1.1" HigherBound="33.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="AbsorberPattern" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="ServiceDeclaration" OID="505616b2-d9bb-491b-a7d7-b9c32bf28188" ParentLink="Module_ServiceDeclaration" LowerBound="11.1" HigherBound="32.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="True" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="EventProcessor" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="VariableDeclaration" OID="7f21306f-38dc-4cc9-bcb1-b6cb46a1d3f2" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="15.1" HigherBound="16.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="System.Xml.XmlDocument" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="doc" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="79f14e9a-92f1-4736-8d70-6319e1d790e5" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="14.1" HigherBound="15.1">
+                <om:Property Name="Type" Value="AbsorberPattern.EventControl" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Control" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="ServiceBody" OID="291afeec-913f-4003-bc7e-d36ae47dab39" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageDeclaration" OID="5b53e0d7-fdf5-4007-8623-da92a5035749" ParentLink="ServiceBody_Declaration" LowerBound="16.15" HigherBound="16.46">
+                    <om:Property Name="Type" Value="AbsorberPattern.EventMsgType.Event" />
+                    <om:Property Name="ParamDirection" Value="In" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Init" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="PortDeclaration" OID="5e33372f-6f34-42c8-b81a-a6e8230cfe18" ParentLink="ServiceBody_Declaration" LowerBound="16.48" HigherBound="16.79">
+                    <om:Property Name="PortModifier" Value="Uses" />
+                    <om:Property Name="Orientation" Value="Right" />
+                    <om:Property Name="PortIndex" Value="24" />
+                    <om:Property Name="IsWebPort" Value="False" />
+                    <om:Property Name="OrderedDelivery" Value="False" />
+                    <om:Property Name="DeliveryNotification" Value="None" />
+                    <om:Property Name="Type" Value="AbsorberPattern.CorrPortType" />
+                    <om:Property Name="ParamDirection" Value="In" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="CorrPort" />
+                    <om:Property Name="Signal" Value="False" />
+                    <om:Element Type="LogicalBindingAttribute" OID="0dcf1b1b-d82e-44bc-9129-cf0d1bced81b" ParentLink="PortDeclaration_CLRAttribute">
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Construct" OID="ca9c91ea-45ea-419a-96a0-41e2706ceaa7" ParentLink="ServiceBody_Statement" LowerBound="19.1" HigherBound="26.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_1" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="MessageAssignment" OID="6dae182e-de5b-4ed5-ab46-745005a6b1bc" ParentLink="ComplexStatement_Statement" LowerBound="22.1" HigherBound="25.1">
+                        <om:Property Name="Expression" Value="doc.LoadXml(&quot;&lt;ns0:EventControl xmlns:ns0=\&quot;http://AbsorberPattern.EventControl\&quot; /&gt;&quot;);&#xD;&#xA;Control = doc;" />
+                        <om:Property Name="ReportToAnalyst" Value="False" />
+                        <om:Property Name="Name" Value="MessageAssignment_1" />
+                        <om:Property Name="Signal" Value="True" />
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="a88cdbdd-bab5-423f-875a-443fd07ba5af" ParentLink="Construct_MessageRef" LowerBound="20.23" HigherBound="20.30">
+                        <om:Property Name="Ref" Value="Control" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Delay" OID="7e3f7952-6a9c-449f-b45b-4d63a8c76116" ParentLink="ServiceBody_Statement" LowerBound="26.1" HigherBound="28.1">
+                    <om:Property Name="Timeout" Value="new System.TimeSpan(0,0,5);" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Do some work" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+                <om:Element Type="Send" OID="27d1e388-433d-4926-ba37-08a78af36e22" ParentLink="ServiceBody_Statement" LowerBound="28.1" HigherBound="30.1">
+                    <om:Property Name="PortName" Value="CorrPort" />
+                    <om:Property Name="MessageName" Value="Control" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="a43693d1-ccb8-4f11-aad8-7d02dc752153" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="CorrPortType" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="1a621483-b473-4b00-a6d7-00c143621a1e" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="7a203bb6-9538-499d-bb93-9236afeddbf2" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.25">
+                    <om:Property Name="Ref" Value="AbsorberPattern.EventControl" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module AbsorberPattern
+{
+    internal porttype CorrPortType
+    {
+        oneway Operation_1
+        {
+            EventControl
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service EventProcessor
+    {
+        message EventControl Control;
+        System.Xml.XmlDocument doc;
+        body (message EventMsgType.Event Init, port uses CorrPortType CorrPort)
+        {
+            doc = new System.Xml.XmlDocument();
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("ca9c91ea-45ea-419a-96a0-41e2706ceaa7")]
+            construct Control
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("6dae182e-de5b-4ed5-ab46-745005a6b1bc")]
+                doc.LoadXml("<ns0:EventControl xmlns:ns0=\"http://AbsorberPattern.EventControl\" />");
+                Control = doc;
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("7e3f7952-6a9c-449f-b45b-4d63a8c76116")]
+            delay new System.TimeSpan(0,0,5);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("27d1e388-433d-4926-ba37-08a78af36e22")]
+            send (CorrPort.Operation_1, Control);
+        }
+    }
+}
+
